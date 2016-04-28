@@ -32,7 +32,8 @@ function processEvent(event) {
             {
                 sessionId: sessionIds.get(sender)
             });
-
+        sendGenericMessage(sender);
+        
         apiaiRequest.on('response', (response) => {
             if (isDefined(response.result)) {
                 let responseText = response.result.fulfillment.speech;
@@ -42,17 +43,17 @@ function processEvent(event) {
                 if (isDefined(responseData) && isDefined(responseData.facebook)) {
                     try {
                         console.log('Response as formatted message');
-                        //sendFBMessage(sender, responseData.facebook);
-                        sendGenericMessage(sender);
+                        sendFBMessage(sender, responseData.facebook);
+                        //sendGenericMessage(sender);
                        
                     } catch (err) {
-                        //sendFBMessage(sender, {text: err.message });
-                        sendGenericMessage(sender);
+                        sendFBMessage(sender, {text: err.message });
+                        //sendGenericMessage(sender);
                     }
                 } else if (isDefined(responseText)) {
                     console.log('Response as text message');
-                    //sendFBMessage(sender, {text: responseText});
-                    sendGenericMessage(sender);
+                    sendFBMessage(sender, {text: responseText});
+                    //sendGenericMessage(sender);
                   
                 }
 
