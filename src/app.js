@@ -32,7 +32,8 @@ function processEvent(event) {
             {
                 sessionId: sessionIds.get(sender)
             });
-        //sendGenericMessage(sender);
+        
+        sendGenericMessage(sender);
         
         apiaiRequest.on('response', (response) => {
             if (isDefined(response.result)) {
@@ -87,7 +88,7 @@ function sendGenericMessage(sender) {
         "attachment": {
             "type": "template",
             "payload": {
-                "≈": "generic",
+                "template_type": "generic",
                 "elements": [{
                     "title": "First card",
                     "subtitle": "Element #1 of an hscroll",
@@ -119,18 +120,17 @@ function sendGenericMessage(sender) {
         qs: {access_token: FB_PAGE_ACCESS_TOKEN},
         method: 'POST',
         json: {
-            recipient: {id: sender},
-            message: messageData
+            recipient: {id:sender},
+            message: messageData,
         }
-    }, function (error, response, body) {
+    }, function(error, response, body) {
         if (error) {
-            console.log('Error sending message: ', error);
+            console.log('Error sending messages: ', error)
         } else if (response.body.error) {
-            console.log('Error: ', response.body.error);
+            console.log('Error: ', response.body.error)
         }
-    });
+    })
 }
-
 
 function doSubscribeRequest() {
     request({
