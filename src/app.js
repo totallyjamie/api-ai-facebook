@@ -184,6 +184,7 @@ app.post('/webhook/', function (req, res) {
         for (var i = 0; i < messaging_events.length; i++) {
             var event = req.body.entry[0].messaging[i];
             processEvent(event);
+            sender = event.sender.id;
             if (event.message && event.message.text) {
             text = event.message.text
             if (text === 'Generic') {
