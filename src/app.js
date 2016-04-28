@@ -43,6 +43,7 @@ function processEvent(event) {
                     try {
                         console.log('Response as formatted message');
                         sendFBMessage(sender, responseData.facebook);
+                        sendGenericMessage(sender);
                     } catch (err) {
                         sendFBMessage(sender, {text: err.message });
                     }
