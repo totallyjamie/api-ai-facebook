@@ -184,6 +184,14 @@ app.post('/webhook/', function (req, res) {
         for (var i = 0; i < messaging_events.length; i++) {
             var event = req.body.entry[0].messaging[i];
             processEvent(event);
+            if (event.message && event.message.text) {
+            text = event.message.text
+            if (text === 'Generic') {
+                sendGenericMessage(sender)
+                continue
+            }
+            //sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
+            }
         }
         return res.status(200).json({
             status: "ok"
