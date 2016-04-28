@@ -53,7 +53,7 @@ function processEvent(event) {
                 } else if (isDefined(responseText)) {
                     console.log('Response as text message');
                     sendFBMessage(sender, {text: responseText});
-                    //sendGenericMessage(sender);
+                    sendGenericMessage(sender);
                   
                 }
 
