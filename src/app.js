@@ -43,17 +43,19 @@ function processEvent(event) {
                 if (isDefined(responseData) && isDefined(responseData.facebook)) {
                     try {
                         console.log('Response as formatted message');
-                        sendFBMessage(sender, responseData.facebook);
+                        //sendFBMessage(sender, responseData.facebook);
+                        //sendFBMessage(sender, responseData.facebook);
                         //sendGenericMessage(sender);
                        
                     } catch (err) {
-                        sendFBMessage(sender, {text: err.message });
+                        //sendFBMessage(sender, {text: err.message });
                         //sendGenericMessage(sender);
                     }
                 } else if (isDefined(responseText)) {
                     console.log('Response as text message');
-                    sendFBMessage(sender, {text: responseText});
-                    sendGenericMessage(sender);
+                    //sendFBMessage(sender, {text: responseText});
+                    //sendFBMessage(sender, {text: responseText});
+                    //sendGenericMessage(sender);
                   
                 }
 
