@@ -32,7 +32,7 @@ function processEvent(event) {
             {
                 sessionId: sessionIds.get(sender)
             });
-        sendGenericMessage(sender);
+        //sendGenericMessage(sender);
         
         apiaiRequest.on('response', (response) => {
             if (isDefined(response.result)) {
